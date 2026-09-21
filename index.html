@@ -1,0 +1,231 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="个人作品集展示网站 - 前端开发与界面设计">
+  <title>林知夏 · 个人作品集</title>
+  <link rel="stylesheet" href="css/style.css">
+  <!-- 防闪烁：在 CSS 渲染前从 localStorage 读取主题，避免深浅色闪跳 -->
+  <script>
+    (function () {
+      var saved = localStorage.getItem('theme');
+      if (saved === 'dark') {
+        document.documentElement.setAttribute('data-theme', 'dark');
+      }
+    })();
+  </script>
+</head>
+<body>
+
+  <!-- ==================== 布局容器 ==================== -->
+  <div class="layout">
+
+    <!-- ================================================================
+         左侧固定侧边栏：个人信息 + 导航
+         桌面端固定在视口内；移动端自动变为顶部流式区块
+         ================================================================ -->
+    <aside class="sidebar" id="sidebar">
+
+      <!-- 头像预留区：替换 assets/avatar.svg 或改为真实照片路径 -->
+      <figure class="sidebar__avatar">
+        <img src="assets/avatar.svg" alt="个人头像占位">
+      </figure>
+
+      <div class="sidebar__intro">
+        <!-- 姓名 -->
+        <h1 class="sidebar__name">林知夏</h1>
+        <!-- 身份定位 / 一句话介绍 -->
+        <p class="sidebar__role">前端开发 · 界面设计</p>
+        <!-- 简短个人简介 -->
+        <p class="sidebar__bio">
+          专注于构建简洁、易用且富有质感的网页体验。
+          关注视觉细节、排版节奏与响应式设计，
+          以克制的设计语言呈现清晰的内容。
+        </p>
+      </div>
+
+      <!-- 专业技能标签 -->
+      <ul class="skills" aria-label="专业技能">
+        <li>HTML</li>
+        <li>CSS</li>
+        <li>JavaScript</li>
+        <li>UI Design</li>
+        <li>Responsive Design</li>
+      </ul>
+
+      <!-- 锚点导航：当前模块高亮由 js/script.js 控制 -->
+      <nav class="sidebar__nav" aria-label="页面导航">
+        <a href="#projects" class="nav-link">项目作品</a>
+        <a href="#about" class="nav-link">关于我</a>
+        <a href="#contact" class="nav-link">联系方式</a>
+      </nav>
+
+      <!-- 主题切换：深色 / 浅色，由 js/script.js 控制逻辑 -->
+      <div class="sidebar__theme">
+        <button class="theme-toggle" id="themeToggle" aria-label="切换深浅色主题">
+          <span class="theme-toggle__icon theme-toggle__icon--moon">☾</span>
+          <span class="theme-toggle__icon theme-toggle__icon--sun">☀</span>
+        </button>
+        <span class="sidebar__theme-label">主题切换</span>
+      </div>
+
+      <p class="sidebar__footer">© 2026 林知夏</p>
+    </aside>
+
+    <!-- ================================================================
+         右侧主体内容：纵向滚动展示
+         ================================================================ -->
+    <main class="main">
+
+      <!-- ==================== 二、项目作品展示 ==================== -->
+      <section class="section" id="projects">
+        <header class="section__head">
+          <p class="section__eyebrow">Selected Works</p>
+          <h2 class="section__title">项目作品</h2>
+          <p class="section__lead">以下是部分代表性项目，按纵向顺序逐项展示。</p>
+        </header>
+
+        <div class="projects">
+          <!-- ============================================================
+               项目区块模板：复制整个 <article class="project"> </article>
+               即可新增一个项目。图片交替左右排版由 .project--flip 控制。
+               ============================================================ -->
+          <article class="project">
+            <figure class="project__media">
+              <!-- 封面图：替换 assets/project-01.svg 为真实项目截图/照片 -->
+              <img src="assets/project-01.svg" alt="项目一封面" loading="lazy">
+            </figure>
+            <div class="project__body">
+              <span class="project__mark" aria-hidden="true">01</span>
+              <p class="project__meta"><span class="project__index">01</span>Web 开发 · 2025.06</p>
+              <h3 class="project__title">个人博客系统</h3>
+              <p class="project__desc">
+                一个以阅读为核心的个人博客，采用极简排版与柔和的中性色调。
+                支持文章归档、标签筛选与移动端自适应阅读体验。
+              </p>
+              <ul class="project__tags">
+                <li>HTML</li>
+                <li>CSS</li>
+                <li>JavaScript</li>
+                <li>Node.js</li>
+              </ul>
+              <!-- “查看项目”链接：指向本地演示页 projects/blog-system/ -->
+              <a class="project__link" href="projects/blog-system/index.html">查看项目</a>
+            </div>
+          </article>
+
+          <article class="project project--flip">
+            <figure class="project__media">
+              <img src="assets/project-02.svg" alt="项目二封面" loading="lazy">
+            </figure>
+            <div class="project__body">
+              <span class="project__mark" aria-hidden="true">02</span>
+              <p class="project__meta"><span class="project__index">02</span>交互设计 · 2025.03</p>
+              <h3 class="project__title">极简天气应用</h3>
+              <p class="project__desc">
+                一款强调信息层级的天气查询应用，通过克制的用色与清晰的数据排布，
+                让用户在最短时间内获取关键天气信息。
+              </p>
+              <ul class="project__tags">
+                <li>JavaScript</li>
+                <li>CSS</li>
+                <li>REST API</li>
+              </ul>
+              <a class="project__link" href="projects/weather-app/index.html">查看项目</a>
+            </div>
+          </article>
+
+          <article class="project">
+            <figure class="project__media">
+              <img src="assets/project-03.svg" alt="项目三封面" loading="lazy">
+            </figure>
+            <div class="project__body">
+              <span class="project__mark" aria-hidden="true">03</span>
+              <p class="project__meta"><span class="project__index">03</span>UI Design · 2024.12</p>
+              <h3 class="project__title">品牌视觉展示站</h3>
+              <p class="project__desc">
+                为独立品牌打造的视觉展示页，注重大留白、细分割线与排版层级，
+                以克制的强调色突出品牌气质与内容质感。
+              </p>
+              <ul class="project__tags">
+                <li>UI Design</li>
+                <li>HTML</li>
+                <li>CSS</li>
+                <li>Responsive</li>
+              </ul>
+              <a class="project__link" href="projects/brand-site/index.html">查看项目</a>
+            </div>
+          </article>
+        </div>
+      </section>
+
+      <!-- ==================== 三、关于我 ==================== -->
+      <section class="section" id="about">
+        <header class="section__head">
+          <p class="section__eyebrow">About</p>
+          <h2 class="section__title">关于我</h2>
+        </header>
+
+        <div class="about">
+          <div class="about__block">
+            <h3 class="about__label" data-no="01">学习背景</h3>
+            <p class="about__text">
+              计算机相关专业在读，系统学习过 Web 前端开发、用户界面设计与交互设计基础。
+              持续通过课程项目与个人实践打磨设计与工程能力。
+            </p>
+          </div>
+
+          <div class="about__block">
+            <h3 class="about__label" data-no="02">能力方向</h3>
+            <p class="about__text">
+              以 <strong>HTML、CSS、JavaScript</strong> 为核心，兼顾
+              <strong>UI 设计</strong>与<strong>响应式布局</strong>，
+              关注从视觉稿到页面的完整实现过程。
+            </p>
+          </div>
+
+          <div class="about__block">
+            <h3 class="about__label" data-no="03">个人优势</h3>
+            <p class="about__text">
+              审美与实现并重、注重细节与代码可维护性；乐于沟通协作，
+              能在限制条件下做出清晰的取舍。
+            </p>
+          </div>
+        </div>
+      </section>
+
+      <!-- ==================== 四、联系方式 ==================== -->
+      <section class="section" id="contact">
+        <header class="section__head">
+          <p class="section__eyebrow">Contact</p>
+          <h2 class="section__title">联系方式</h2>
+        </header>
+
+        <ul class="contact">
+          <li>
+            <span class="contact__label">邮箱</span>
+            <a href="mailto:hello@example.com">hello@example.com</a>
+          </li>
+          <li>
+            <span class="contact__label">电话</span>
+            <a href="tel:+8613800000000">+86 138 0000 0000</a>
+          </li>
+          <li>
+            <span class="contact__label">所在地</span>
+            <span>中国 · 上海</span>
+          </li>
+          <li>
+            <span class="contact__label">GitHub</span>
+            <!-- 替换为真实 GitHub 主页地址 -->
+            <a href="https://github.com/yourname" target="_blank" rel="noopener">github.com/yourname</a>
+          </li>
+        </ul>
+      </section>
+
+    </main>
+  </div>
+
+  <script src="js/script.js"></script>
+</body>
+</html>
